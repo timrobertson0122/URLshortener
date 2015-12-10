@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  h1.text-center Welcome to the URL Shortener
+
+  div.container
+  div.content
+  div.well
+    form.form-horizontal(name="input", action="/create", method="post")
+      div.form-group(align='center')
+        p
+          input(type="text", name="urlToShorten", class="form-control", placeholder="Please enter a URL")
+        p
+          input(type="submit", value="Shorten", class="btn btn-primary")
