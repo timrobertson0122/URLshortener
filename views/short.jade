@@ -3,13 +3,12 @@ extends layout
 block content
   h1= title
   h1.text-center Welcome to the URL Shortener
-
   div.container
   div.content
   div.well
     div(align='center')
-      h1: a(href="#{shortUrl}") #{shortUrl}
-
+      h2: a(href="#{shortUrl}") #{shortUrl}
+      h4: Error #{message}
       div.row
       p
         a.btn(href="/").btn-primary Make another
