@@ -9,8 +9,10 @@ router.post('/', function(req, res, next) {
 	var baseUrl = 'http://' + req.app.get('hostname') + '/';
 
 	if (!exports.urlToShorten) {
+
 			console.log('Request did not contain a url to shorten, please provide urlToShorten');
 			res.render('short', { message: 'Please provide a valid URL to shorten' });
+
 	} else {
 
 			console.log("Request to shorten " + exports.urlToShorten);
@@ -24,11 +26,10 @@ router.post('/', function(req, res, next) {
 
 /* GET long url and redirect */
 router.get('/:id', function(req, res, next) {
-
 	var shortCode = req.path.substring(1);
 
 	console.log("Fetching URL indexed by " + shortCode);
-	var theLongUrl = shortToLong[shortCode];
+	var theLongUrl = shortener.shortToLong[shortCode];
 
 	console.log('Short code ' + shortCode + " refers to " + theLongUrl);
 	console.log("redirecting to " + theLongUrl);

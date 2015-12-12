@@ -1,7 +1,8 @@
 var shorty = require('./shorty');
+
 // these hold the mappings between short codes and longUrls
 var longToShort = [];
-var shortToLong = [];
+exports.shortToLong = [];
 
 // logic for creating a short url, to be unit tested
 
@@ -23,7 +24,7 @@ function createShortCode(longUrl) {
         console.log("Shortened " + longUrl + " to a shortcode of " + shortUrlCode);
 
         longToShort[longUrl] = shortUrlCode;
-        shortToLong[shortUrlCode] = longUrl;
+        exports.shortToLong[shortUrlCode] = longUrl;
     }
 
     return shortUrlCode;
