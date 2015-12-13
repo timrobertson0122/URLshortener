@@ -3,10 +3,10 @@ var express = require('express');
 var router = express.Router();
 
 /* POST create short url */
-router.post('/', function(req, res, next) {
+router.route('/').post(function(req, res, next) {
 
 	exports.urlToShorten = req.body.urlToShorten;
-	var baseUrl = 'http://' + req.app.get('hostname') + '/';
+	var baseUrl = 'tim.ly/';
 
 	if (!exports.urlToShorten) {
 
@@ -25,15 +25,16 @@ router.post('/', function(req, res, next) {
 });
 
 /* GET long url and redirect */
-router.get('/:id', function(req, res, next) {
-	var shortCode = req.path.substring(1);
+router.route('/:id').get(function(req, res, next) {
+
+	var shortCode = req.params.id;
 
 	console.log("Fetching URL indexed by " + shortCode);
 	var theLongUrl = shortener.shortToLong[shortCode];
 
 	console.log('Short code ' + shortCode + " refers to " + theLongUrl);
 	console.log("redirecting to " + theLongUrl);
-	res.redirect(302, {'Location': theLongUrl});
+	res.writeHead(302, {'Location': theLongUrl});
 	res.end();
 });
 
