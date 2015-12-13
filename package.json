@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+		"test": "wdio wdio.conf.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -14,5 +15,10 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "webdriverio": "^3.3.0"
   }
 }
