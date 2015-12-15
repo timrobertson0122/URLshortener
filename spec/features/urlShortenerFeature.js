@@ -24,14 +24,5 @@ describe('Url Shortener', function() {
 			})
 			.call(done);
 	});
-
-	it('can create and return a shortened url', function(done) {
-		var originalUrl = 'www.github.com/timrobertson0122/URLshortener';
-		client
-			.url('http://localhost:3000')
-			.click("shorten", done);
-
-			expect(shortUrl).to.not.equal('');
-	});
-
+	
 });

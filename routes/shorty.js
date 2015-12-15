@@ -6,7 +6,7 @@ var router = express.Router();
 router.route('/').post(function(req, res, next) {
 
 	exports.urlToShorten = req.body.urlToShorten;
-	var baseUrl = 'tim.ly/';
+	var baseUrl = 'http://' + req.app.get('hostname') + '/';
 
 	if (!exports.urlToShorten) {
 

@@ -1,15 +1,23 @@
 extends layout
 
 block content
-  h1= title
-  h1.text-center Welcome to Tim.ly - the URL Shortener :)
+	h1= title
+	h1.text-center Welcome to Tim.ly - the URL Shortener :)
 
-  div.container
-  div.content
-  div.well
-    form.form-horizontal(name="input", action="/tim.ly", method="post")
-      div.form-group(align='center')
-        p
-          input(type="text", name="urlToShorten", class="form-control", placeholder="Please enter a URL")
-        p
-          input(type="submit", value="Shorten", id="shorten", class="btn btn-primary")
+	div.container
+	div.content
+	div.well
+		script(type='text/javascript').
+			$("#inputform").submit(function(event) {
+				event.preventDefault();
+				var $form = $( this ),
+				term = $form.find("input[name='s']").val(),
+				url = $form.attr("action");
+				var posting = $.post( url, { s: term } );
+				});
+		form.form-horizontal(id="inputform", name="s", action="/", method="post")
+			div.form-group(align='center')
+				p
+					input(type="text", name="urlToShorten", class="form-control", placeholder="Please enter a URL")
+				p
+					input(type="submit", value="Shorten", id="shorten", class="btn btn-primary")
