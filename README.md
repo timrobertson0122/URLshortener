@@ -6,7 +6,7 @@
 - Displays the short url as a clickable link
 - Redirects the user to the origin url
 
-![screenshot](URLshortener/public/images/URLShortener SS.png)
+![screenshot](public/images/URLShortener SS.png)
 
 ## To Run The App
 
