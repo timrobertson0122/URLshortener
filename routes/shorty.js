@@ -21,6 +21,7 @@ router.route('/').post(function(req, res, next) {
 			res.setHeader('Content-Type', 'text/html');
 			res.statusCode = 200;
 			res.render('short', { shortUrl: baseUrl + shortener.shortCode });
+			// res.json({ shortUrl: baseUrl + shortener.shortCode });
 	}
 });
 
