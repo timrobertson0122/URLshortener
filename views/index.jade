@@ -7,17 +7,32 @@ block content
 	div.container
 	div.content
 	div.well
-		script(type='text/javascript').
-			$("#inputform").submit(function(event) {
-				event.preventDefault();
-				var $form = $( this ),
-				term = $form.find("input[name='s']").val(),
-				url = $form.attr("action");
-				var posting = $.post( url, { s: term } );
-				});
 		form.form-horizontal(id="inputform", name="s", action="/", method="post")
 			div.form-group(align='center')
 				p
 					input(type="text", name="urlToShorten", class="form-control", placeholder="Please enter a URL")
 				p
 					input(type="submit", value="Shorten", id="shorten", class="btn btn-primary")
+
+script(type='text/javascript').
+	$(document).ready(function(){
+
+		$("#inputform").on('submit', function(event) {
+
+			// Stop form from submitting normally
+			event.preventDefault();
+
+			// get the inputted url
+			var $form = $(this),
+			term = $form.find("input[name='s']").val(),
+			url = $form.attr("action");
+
+			// Send the data using post
+			var posting = $.post( url, { s: term } );
+
+			//- // show the resulting url on the page
+			//- posting.done(function( data ) {
+			//- 	$( '#well' ).empty().append(#{shortUrl});
+			//- });
+		});
+	});
